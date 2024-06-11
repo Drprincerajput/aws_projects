@@ -34,6 +34,8 @@ In this project, I set up and utilized Amazon Simple Storage Service (Amazon S3)
       <img src="./img/multi-region-access-1.1.c5de5b0a30bd9cd15fdacdf836d7d8956773a347.png" alt="Amazon S3 Console" style="margin-top: 5px;">
     </div>
 - In the Amazon S3 left-hand navigation, select Buckets. Then, select Create bucket.<img align="top" src="./img/multi-region-access-1.1.c5de5b0a30bd9cd15fdacdf836d7d8956773a347.png" alt="Amazon S3 Console">
+- In the Amazon S3 left-hand navigation, select Buckets. Then, select Create bucket. ![Amazon S3 Console](./img/multi-region-access-1.1.c5de5b0a30bd9cd15fdacdf836d7d8956773a347.png)
+
 
 
 
