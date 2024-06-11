@@ -118,90 +118,91 @@ In this project, I set up and utilized Amazon Simple Storage Service (Amazon S3)
 
 ![3.1](image_link_3.1)
 
-    Select the name of your Multi-Region Access Point to configure additional settings.
-    Each access point has an automatically-generated and globally unique alias, and an Amazon Resource Name (ARN). The alias will look like a random string ending with .mrap – for example, mmqdt41e4bf6x.mrap. The ARN has the format arn:aws:s3::<account-id>:accesspoint/<alias> and is typically used for data access.
-    Copy the ARN to a notepad, you will need it later.
+- Select the name of your Multi-Region Access Point to configure additional settings.
+- Each access point has an automatically-generated and globally unique alias, and an Amazon Resource Name (ARN). The alias will look like a random string ending with .mrap – for example, mmqdt41e4bf6x.mrap. The ARN has the format arn:aws:s3::<account-id>:accesspoint/<alias> and is typically used for data access.
+- Copy the ARN to a notepad, you will need it later.
 
 ### 3.2 - Configure replication using the built-in templates
 
 ![3.2](image_link_3.2)
 
-    From the properties of your new Multi Region Access Point, select the Replication and failover tab.
+- From the properties of your new Multi Region Access Point, select the Replication and failover tab.
 
 ### 3.3 - Replication and failover overview map
 
 ![3.3](image_link_3.3)
 
-    The Replication and failover overview (Replication) map shows the AWS Regions of the buckets that you added to the Multi-Region Access Point. The lack of arrows shows that S3 Cross-Region Replication has not yet been configured.
+- The Replication and failover overview (Replication) map shows the AWS Regions of the buckets that you added to the Multi-Region Access Point. The lack of arrows shows that S3 Cross-Region Replication has not yet been configured.
 
 ### 3.4 - Create replication rules
 
 ![3.4](image_link_3.4)
 
-    Choose Replication rules and select Create replication rules.
+- Choose Replication rules and select Create replication rules.
 
 ### 3.5 - Replication templates
 
 ![3.5](image_link_3.5)
 
-    On the Choose template page, there are two template options available, one-way and two-way (also known as full mesh). Two-way replication is recommended with Multi-Region Access Points, as objects can be written to any bucket.
-    Choose the Replicate objects among all specified buckets template.
+- On the Choose template page, there are two template options available, one-way and two-way (also known as full mesh). Two-way replication is recommended with Multi-Region Access Points, as objects can be written to any bucket.
+- Choose the Replicate objects among all specified buckets template.
 
 ### 3.6 - Enable bucket versioning
 
 ![3.6](image_link_3.6)
 
-    Note: Because you didn't enable Bucket Versioning on the previously created buckets, a warning is displayed as Versioning is required for replication. The Multi-Region Access Point console makes it easy to enable this.
-    Select all the included buckets and choose Enable Bucket Versioning. All the buckets will change to Enabled in the Bucket Versioning column.
+- Note: Because you didn't enable Bucket Versioning on the previously created buckets, a warning is displayed as Versioning is required for replication. The Multi-Region Access Point console makes it easy to enable this.
+- Select all the included buckets and choose Enable Bucket Versioning. All the buckets will change to Enabled in the Bucket Versioning column.
 
 ### 3.7 - Replication scope
 
 ![3.7](image_link_3.7)
 
-    For Replication rule configuration, verify that it is Enabled. 
-    For Scope, choose Apply to all objects in the bucket.
-        You can apply S3 Replication to particular prefixes (or folders) in an Amazon S3 bucket. It is typical to have all data replicated so that all clients see the same data regardless of location, though you may have a use-case where it is appropriate for buckets accessed via a Multi-Region Access Point to have differing data.
+- For Replication rule configuration, verify that it is Enabled. 
+- For Scope, choose Apply to all objects in the bucket.
+    - You can apply S3 Replication to particular prefixes (or folders) in an Amazon S3 bucket. It is typical to have all data replicated so that all clients see the same data regardless of location, though you may have a use-case where it is appropriate for buckets accessed via a Multi-Region Access Point to have differing data.
 
 ### 3.8 - Additional replication options
 
 ![3.8](image_link_3.8)
 
-    For Additional replication options, choose the following options:
-        Replication Time Control (RTC) - optional
-        Delete marker replication
-        Replica modification sync
-    Review the Learn more links for more information about these capabilities.
+- For Additional replication options, choose the following options:
+    - Replication Time Control (RTC) - optional
+    - Delete marker replication
+    - Replica modification sync
+- Review the Learn more links for more information about these capabilities.
 
 Notes:
 
-    To fully synchronize the contents of your replicated data, you should enable the replication of deletion markers and metadata changes on your objects between your replicated buckets.
-    To be notified of any replication failures and monitor your replication progress including the amount of data yet to be replicated, the number of objects remaining to be replicated, and the latency of replication, we recommend that you enable Replication metrics and notifications (they need to be enabled for module 8 of this guide).  
-    To obtain an SLA of completing replication for 99.9% of all new objects within 15 minutes, which can help meet compliance or business requirements, enable S3 Replication Time Control.
+- To fully synchronize the contents of your replicated data, you should enable the replication of deletion markers and metadata changes on your objects between your replicated buckets.
+- To be notified of any replication failures and monitor your replication progress including the amount of data yet to be replicated, the number of objects remaining to be replicated, and the latency of replication, we recommend that you enable Replication metrics and notifications (they need to be enabled for module 8 of this guide).  
+- To obtain an SLA of completing replication for 99.9% of all new objects within 15 minutes, which can help meet compliance or business requirements, enable S3 Replication Time Control.
 
 ### 3.9 - Create replication rules
 
 ![3.9](image_link_3.9)
 
-    Then, select Create replication rules.
-    After a few seconds the replication rules (one per bucket, per direction) should be successfully created. Once this is complete, select Close.
+- Then, select Create replication rules.
+- After a few seconds the replication rules (one per bucket, per direction) should be successfully created. Once this is complete, select Close.
 
 ### 3.10 - Replication and failover overview map
 
 ![3.10](image_link_3.10)
 
-    Review the Replication and failover overview (Replication) map, it should now show two-way replication between your S3 buckets.
+- Review the Replication and failover overview (Replication) map, it should now show two-way replication between your S3 buckets.
 
 ### 3.11 - Upload an object to one of your buckets
 
 ![3.11](image_link_3.11)
 
-    In the Amazon S3 console left-hand navigation, open Buckets in a new browser tab. Then, select the name of one of the buckets that you previously created.
-    Under the Objects tab, select Upload.
-    Add a file from your computer.
-        This should be no more than a few megabytes, and not contain any sensitive information. For the purposes of this guide, you do not need to change any of the defaults.
-    Select Upload. 
+- In the Amazon S3 console left-hand navigation, open Buckets in a new browser tab. Then, select the name of one of the buckets that you previously created.
+- Under the Objects tab, select Upload.
+- Add a file from your computer.
+    - This should be no more than a few megabytes, and not contain any sensitive information. For the purposes of this guide, you do not need to change any of the defaults.
+- Select Upload. 
 
 Note: Most new objects complete replication in seconds to minutes to all of the destination buckets.
+
 
 
 ## 4. Managed traffic redirection
